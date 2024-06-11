@@ -10,7 +10,9 @@ function EditTask({ task, onEdit }) {
         onEdit(task);
         }}
     >
-    <IoMdCreate />
+    <IoMdCreate 
+        title='Edit Task'
+    />
   </div>
   );
 }

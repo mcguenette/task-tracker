@@ -11,7 +11,9 @@ function DeleteTask({ taskId, onDelete }) {
           onDelete(taskId); 
         }}
       >
-    <IoMdTrash />
+    <IoMdTrash
+      title='Delete Task' 
+    />
     </div>
   );
 }

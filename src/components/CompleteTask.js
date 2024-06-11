@@ -9,6 +9,7 @@ function CompleteTask({ task, onComplete }) {
     >
       <IoMdCheckmarkCircleOutline
         className={task.completed ? 'icon-checked' : 'icon-unchecked'} 
+        title='Mark as complete'
       />
     </div>
   );

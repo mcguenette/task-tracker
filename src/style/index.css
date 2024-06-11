@@ -232,9 +232,9 @@ section.task {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    padding: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0px 20px;
 }
 
 .time {
@@ -274,4 +274,10 @@ section.task {
 .task-right {
     display: flex;
     justify-content: space-between;
+}
+
+.text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
