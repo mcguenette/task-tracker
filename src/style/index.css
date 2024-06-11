@@ -1,0 +1,264 @@
+@import url(./reset.css);
+
+:root {
+    --primary-dark: #202124;
+    --app-bg-dark: rgb(24, 23, 32);
+    --secondary-dark-color: #292837;
+    --light-color: #fafafa;
+    --primary-blue: #09f;
+    --secondary-blue: rgb(0, 119, 198);
+    --primary-green: #9f0;
+    --primary-red: rgb(255, 0, 93);
+    --primary-orange: #f90;
+    --primary-purple: #90f;
+    --react-color: #61dafb;
+    --shadow-color: 245deg 23% 8%;
+    --shadow-elevation-low:
+        0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.52),
+        0.4px 0.3px 0.6px -2.5px hsl(var(--shadow-color) / 0.52);
+    --shadow-elevation-medium:
+        0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.72),
+        1.8px 1.7px 2.8px -2.5px hsl(var(--shadow-color) / 0.72);
+    --shadow-elevation-high:
+        0.1px 0.1px 0.2px hsl(var(--shadow-color) / 0.89),
+        2px 1.9px 3.1px -1.2px hsl(var(--shadow-color) / 0.89),
+        9px 8.4px 13.8px -2.5px hsl(var(--shadow-color) / 0.89);
+}
+
+body {
+    background-color: var(--app-bg-dark);
+    font-family: 'Figtree', sans-serif;
+    color: var(--light-color);
+}
+
+.container {
+    width: min(100% - 30px, 1200px);
+    margin-inline: auto;
+}
+
+.flex {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 80px;
+}
+
+h1,
+h2,
+p,
+li,
+a,
+h3,
+input {
+    color: #fff;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+main {
+    height: 100vh;
+    overflow: hidden;
+}
+
+h2 {
+    font-weight: 400;
+    line-height: 1;
+
+    span {
+        color: #00f3b6;
+
+        /* Use &: for hover, etc while nesting CSS */
+        &:hover {
+            color: blue;
+        }
+    }
+}
+
+
+li+li {
+    margin-left: 25px;
+}
+
+li {
+    display: inline;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+button {
+    height: 44px;
+    border-radius: 10px;
+    font-size: 1.6rem;
+}
+
+button.primary {
+    background-color: var(--primary-purple);
+    color: var(--light-color);
+    width: 120px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    &:hover {
+        box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+        transition-duration: .1s;
+    }
+}
+
+button.secondary {
+    background-color: transparent;
+    border: 1px solid var(--react-color);
+    color: var(--react-color);
+    width: 130px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    &:hover {
+        background-color: rgb(97 218 251 / 8%);
+        border: 1px solid #98e9ff;
+    }
+}
+
+button.secondary.close-dialog {
+    margin-top: 10px;
+}
+
+.button-toggle {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+
+input {
+    width: 240px;
+    height: 44px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 5%);
+    background-color: rgb(255 255 255 / 5%);
+    font-size: 1.6rem;
+}
+
+form.add-task-form {
+    display: flex;
+    gap: 15px;
+}
+
+section {
+    margin-top: 20px;
+}
+
+input[type="datetime-local"] {
+    color: #88888b;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.6;
+    filter: invert(0.8);
+}
+
+.error-message {
+    font-size: 1.1rem;
+    color: var(--primary-red);
+    margin: 5px;
+    cursor: context-menu;
+    height: 15px;
+    visibility: hidden;
+}
+
+.error-message.visible {
+    visibility:visible;
+  }
+
+
+section {
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-container {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+section.task {
+    width: 240px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 5%);
+    background-color: rgb(255 255 255 / 5%);
+    margin-top: 10px;
+}
+
+.error-section {
+    visibility: hidden;
+}
+
+.error-section.visible {
+    visibility: visible;
+}
+
+
+.list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.time {
+    font-size: 1rem;
+    color: #88888b;
+}
+
+.edit,
+.delete,
+.complete {
+    cursor: pointer;
+}
+
+.icons {
+    display: flex;
+    gap: 3px;
+    font-size: 1.4rem;
+}
+
+.icon-checked {
+    color: var(--primary-green);
+}
+
+.task-right {
+    display: flex;
+    justify-content: space-between;
+}
