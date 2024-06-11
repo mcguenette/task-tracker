@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import AddTask from "./components/AddTask";
-import TaskList from "./components/TaskList";
+import AddTask from './components/AddTask';
+import TaskList from './components/TaskList';
 
 const initialState = {
   tasks: []
@@ -58,14 +58,28 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isEditing, setIsEditing] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);  // Added to track initial load
 
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    dispatch({ type: types.SET_TASKS, payload: storedTasks });
+    try {
+      const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      dispatch({ type: types.SET_TASKS, payload: storedTasks });
+    } catch (error) {
+      console.error('Failed to load tasks from localStorage:', error);
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(state.tasks));
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      return;
+    }
+
+    try {
+      localStorage.setItem('tasks', JSON.stringify(state.tasks));
+    } catch (error) {
+      console.error('Failed to save tasks to localStorage:', error);
+    }
   }, [state.tasks]);
 
   const addTask = task => {
@@ -94,12 +108,22 @@ function App() {
 
   return (
     <main>
-      <div className="container">
-        <div className="flex">
+      <div className='container'>
+        <div className='flex'>
           <h1>Task Tracker</h1>
-          <AddTask onAddTask={addTask} isEditing={isEditing} editingTask={editingTask} onUpdateTask={updateTask} />
+          <AddTask 
+          onAddTask={addTask} 
+          isEditing={isEditing} 
+          editingTask={editingTask} 
+          onUpdateTask={updateTask} 
+          />
           <div className='grid'>
-          <TaskList tasks={state.tasks} onDelete={deleteTask} onEdit={editTask} onComplete={completeTask} />
+            <TaskList 
+            tasks={state.tasks} 
+            onDelete={deleteTask} 
+            onEdit={editTask} 
+            onComplete={completeTask} 
+            />
           </div>
         </div>
       </div>

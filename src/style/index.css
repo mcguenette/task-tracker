@@ -246,6 +246,19 @@ section.task {
 .delete,
 .complete {
     cursor: pointer;
+    transition: all .5s;
+}
+
+.delete:hover {
+    color: var(--primary-red);
+}
+
+.edit:hover {
+    color: var(--react-color);
+}
+
+.complete:hover {
+    color: var(--primary-green);
 }
 
 .icons {
